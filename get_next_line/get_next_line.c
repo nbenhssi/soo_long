@@ -34,6 +34,30 @@ static char	*strfchr(char *str)
 	return (NULL);
 }
 
+
+
+
+static char	*strfchr(char *str)
+{
+	int		i;
+	char	*res;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+	{
+		res = malloc(i + 1);
+		if (!res)
+			return (NULL);
+		ft_strncpy(res, str, i);
+		res[i] = '\0';
+		return (res);
+	}
+	return (NULL);
+}
 static void	chyata(char **str)
 {
 	char	*temp;
