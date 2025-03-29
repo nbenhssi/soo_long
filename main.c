@@ -67,3 +67,44 @@ int	main(int argc, char **argv)
 		handle_path_error(map, &cp, count_c);
 	return (libix(map), 0);
 }
+
+
+static void	init_player_and_collectibles(char **map, t_mapcopy *cp, int j, int i)
+{
+	if (map[j][i] == 'P')
+	{
+		cp->x_player = i;
+		cp->y_player = j;
+	}
+	if (map[j][i] == 'C')
+		cp->cont_c++;
+}
+
+void	copy_map(char **map, t_mapcopy *cp)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	cp->height = 0;
+	cp->width = 0;
+	size_map(map, &cp->height, &cp->width);
+	cp->mapcopy = malloc(sizeof(char *) * (cp->height + 1));
+	if (!cp->mapcopy)
+		return (free_map(map));
+	while (map[j])
+	{
+		i = 0;
+		cp->mapcopy[j] = ft_strdup(map[j]);
+		if (cp->mapcopy == NULL)
+		{
+			free_map(map);
+			exit(0);
+		}
+		while (map[j][i])
+			init_player_and_collectibles(map, cp, j, i++);
+		j++;
+	}
+	cp->mapcopy[j] = NULL;
+}
