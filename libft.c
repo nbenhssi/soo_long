@@ -6,7 +6,7 @@
 /*   By: nbenhssi <nbenhssi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 12:03:10 by nbenhssi          #+#    #+#             */
-/*   Updated: 2025/03/03 13:24:16 by nbenhssi         ###   ########.fr       */
+/*   Updated: 2025/03/27 00:35:42 by nbenhssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,27 +91,4 @@ char	**ft_split(const char *s, char c)
 	}
 	res[ft_countwords((char *)s, c)] = NULL;
 	return (res);
-}
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*s3;
-	int		len;
-	int		i;
-	int		j;
-
-	j = 0;
-	i = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	s3 = (char *)malloc(len + 1);
-	if (!s3)
-		return (NULL);
-	while (s1[i])
-		s3[j++] = s1[i++];
-	i = 0;
-	while (s2[i])
-		s3[j++] = s2[i++];
-	s3[j] = '\0';
-	return (s3);
 }
